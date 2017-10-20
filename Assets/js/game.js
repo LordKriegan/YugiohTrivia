@@ -42,7 +42,7 @@ function endGame() {
     }, 5000);
 }
 
-function showAnswer() {
+function showAnswer(num) {
 	clearInterval(gameTimer);
 	$("#answersBox").empty();
 	//declared i out here to emulate block level scoping cus JS is wierd and this makes more sense :/
@@ -52,11 +52,23 @@ function showAnswer() {
 			break;
 		}
 	}
+
+	switch (num) {
+		case 1:
+			$("#answersBox").append("<p class='correctAnswer'>Thats right!</p>");
+			break;
+		case 2:
+			$("#answersBox").append("<p class='correctAnswer'>Wrong answer!</p>");
+			break;
+		case 3:
+			$("#answersBox").append("<p class='correctAnswer'>Time is up!</p>");	
+	}
+
 	$("#answersBox").append("<p class='correctAnswer'>" + questions[currQuestion].answers[i].ans + "</p>")
 	var timeOut = setTimeout(function() {
 		currQuestion++;
         loadQuestion(currQuestion);
-	}, 5000)
+	}, 3000)
 }
 
 function startTimer() {
@@ -67,9 +79,9 @@ function startTimer() {
         $("#timer").html(timeConverter(answerTime));
         if (answerTime === 0) {
             unAnswered++;
-            showAnswer();
+            showAnswer(3);
         }
-    }, 3000);
+    }, 1000);
 }
 
 function timeConverter(t) {
@@ -98,10 +110,11 @@ window.onload = function() {
         //if answer is correct, update correct answers, otherwise update wrong answers.
         if (questions[currQuestion].answers[$(this).data("index")].isCorrect === true) {
             correctAnswers++;
+            showAnswer(1);
         } else {
             wrongAnswers++;
+            showAnswer(2);
         }
-		showAnswer();
     });
 
 
