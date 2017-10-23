@@ -23,6 +23,10 @@ body {
 	padding: 5px;
 }
 
+#question {
+	display: none;
+}
+
 .answer, .correctAnswer  {
 	border-radius: 15%;
 	border-style: solid;

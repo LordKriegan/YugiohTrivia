@@ -38,7 +38,8 @@ function endGame() {
     	correctAnswer = 0;
     	wrongAnswers = 0;
     	unAnswered = 0;
-    	loadQuestion(currQuestion);
+    	$("#answersBox").empty();
+        $("#answersBox").append("<p class='answer' id='startBtn'>Start</p");
     }, 5000);
 }
 
@@ -105,7 +106,10 @@ function timeConverter(t) {
 
 window.onload = function() {
     //generate first question
-    loadQuestion(currQuestion);
+    $(document).on("click", "#startBtn", function() {
+        $("#question").css("display", "inline-block");
+        loadQuestion(currQuestion);
+    });
     $(document).on("click", ".answer", function() {
         //if answer is correct, update correct answers, otherwise update wrong answers.
         if (questions[currQuestion].answers[$(this).data("index")].isCorrect === true) {
