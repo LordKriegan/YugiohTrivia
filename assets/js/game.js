@@ -62,7 +62,7 @@ function showAnswer(num) {
 			$("#answersBox").append("<p class='correctAnswer'>Wrong answer!</p>");
 			break;
 		case 3:
-			$("#answersBox").append("<p class='correctAnswer'>Time is up!</p>");	
+			$("#answersBox").append("<p class='correctAnswer'>You ran out of time!</p>");	
 	}
 
 	$("#answersBox").append("<p class='correctAnswer'>" + questions[currQuestion].answers[i].ans + "</p>")
