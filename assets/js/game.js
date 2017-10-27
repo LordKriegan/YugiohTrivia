@@ -38,6 +38,7 @@ function endGame() {
     	correctAnswer = 0;
     	wrongAnswers = 0;
     	unAnswered = 0;
+        $("#question").css("display", "none");
     	$("#answersBox").empty();
         $("#answersBox").append("<p class='answer' id='startBtn'>Start</p");
     }, 5000);
